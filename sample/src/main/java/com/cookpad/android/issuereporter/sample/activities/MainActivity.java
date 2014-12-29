@@ -1,8 +1,10 @@
-package com.cookpad.android.issuereporter.sample;
+package com.cookpad.android.issuereporter.sample.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
+
+import com.cookpad.android.issuereporter.sample.R;
 
 public class MainActivity extends ActionBarActivity {
     @Override

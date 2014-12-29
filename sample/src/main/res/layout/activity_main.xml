@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.cookpad.android.issuereporter.sample.MainActivity">
+    tools:context="com.cookpad.android.issuereporter.sample.activities.MainActivity">
 
     <ImageView
         android:src="@drawable/android_robot_200"
