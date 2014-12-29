@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.app.Application;
 import android.support.v4.app.FragmentActivity;
 
+import com.cookpad.android.issuereporter.IssueReporter;
 import com.cookpad.android.issuereporter.ReportMail;
-import com.cookpad.android.issuereporter.fragment.IssueReporterFragment;
 
-public class IssueReporter {
-    private static IssueReporter INSTANCE;
+public class IssueReporterManager {
+    private static IssueReporterManager INSTANCE;
 
     private ReportMail reportMail;
 
@@ -17,19 +17,19 @@ public class IssueReporter {
         @Override
         public void onCreated(Activity activity) {
             if (activity instanceof FragmentActivity) {
-                IssueReporterFragment.apply((FragmentActivity) activity, reportMail);
+                IssueReporter.apply((FragmentActivity) activity, reportMail);
             }
         }
     };
 
-    public IssueReporter(Application application, ReportMail reportMail) {
+    public IssueReporterManager(Application application, ReportMail reportMail) {
         this.reportMail = reportMail;
         this.activityLifecycleCallbacksAdapter = new ActivityLifecycleCallbacksAdapter(application, callback);
     }
 
     public static synchronized void start(Application application, ReportMail reportMail) {
         if (INSTANCE == null) {
-            INSTANCE = new IssueReporter(application, reportMail);
+            INSTANCE = new IssueReporterManager(application, reportMail);
         }
     }
 
