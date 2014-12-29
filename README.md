@@ -21,6 +21,6 @@ protected void onCreate(Bundle savedInstanceState) {
             .subject("Report an issue")
             .body(new SystemProfile(this).toString())
             .build();
-    IssueReporterFragment.apply(this, reportMail);
+    IssueReporter.apply(this, reportMail);
 }
 ```
