@@ -1,0 +1,18 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="6dp">
+
+    <ImageView
+        android:src="@drawable/android_robot_200"
+        android:layout_width="42dp"
+        android:layout_height="42dp" />
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="6dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</LinearLayout>

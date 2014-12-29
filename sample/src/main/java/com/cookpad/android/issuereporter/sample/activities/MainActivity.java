@@ -2,9 +2,10 @@ package com.cookpad.android.issuereporter.sample.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.view.View;
+import android.support.v7.widget.RecyclerView;
 
 import com.cookpad.android.issuereporter.sample.R;
+import com.cookpad.android.issuereporter.sample.adapters.ListAdapter;
 
 public class MainActivity extends ActionBarActivity {
     @Override
@@ -15,15 +16,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void setupViews() {
-        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openOtherActivity();
-            }
-        });
-    }
-
-    private void openOtherActivity() {
-        OtherActivity.launch(this);
+        RecyclerView listView = (RecyclerView) findViewById(R.id.list_view);
+        ListAdapter listAdapter = new ListAdapter(listView);
+        listView.setAdapter(listAdapter);
     }
 }
