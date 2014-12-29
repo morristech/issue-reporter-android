@@ -1,18 +1,15 @@
-package com.cookpad.android.issuereporter.fragment;
+package com.cookpad.android.issuereporter.support.fragment;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class ProgressDialogFragment extends DialogFragment {
     private static final String EXTRA_MESSAGE = "message";
 
@@ -26,14 +23,14 @@ public class ProgressDialogFragment extends DialogFragment {
         return fragment;
     }
 
-    public static void show(Activity activity, int message) {
-        FragmentManager fragmentManager = activity.getFragmentManager();
+    public static void show(FragmentActivity activity, int message) {
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
         ProgressDialogFragment dialogFragment = ProgressDialogFragment.newInstance(message);
         dialogFragment.show(fragmentManager, ProgressDialogFragment.class.getName());
     }
 
-    public static void dismiss(Activity activity) {
-        FragmentManager fragmentManager = activity.getFragmentManager();
+    public static void dismiss(FragmentActivity activity) {
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
         Fragment fragment = fragmentManager
                 .findFragmentByTag(ProgressDialogFragment.class.getName());
         if (!(fragment instanceof ProgressDialogFragment)) {
@@ -47,8 +44,8 @@ public class ProgressDialogFragment extends DialogFragment {
         dialogFragment.dismiss();
     }
 
-    public static boolean isShowing(Activity activity) {
-        FragmentManager fragmentManager = activity.getFragmentManager();
+    public static boolean isShowing(FragmentActivity activity) {
+        FragmentManager fragmentManager = activity.getSupportFragmentManager();
         Fragment fragment =
                 fragmentManager.findFragmentByTag(ProgressDialogFragment.class.getName());
         return fragment != null;
@@ -74,4 +71,3 @@ public class ProgressDialogFragment extends DialogFragment {
         return progressDialog;
     }
 }
-

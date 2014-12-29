@@ -1,19 +1,4 @@
-package com.cookpad.android.issuereporter.fragment;
-
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.app.Fragment;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.RemoteException;
-import android.support.v4.content.FileProvider;
-import android.widget.Toast;
+package com.cookpad.android.issuereporter.support.fragment;
 
 import com.cookpad.android.issuereporter.IIntentReceiveService;
 import com.cookpad.android.issuereporter.IIntentReceiveServiceCallback;
@@ -24,10 +9,22 @@ import com.cookpad.android.issuereporter.service.IntentReceiveService;
 import com.cookpad.android.issuereporter.task.ScreenshotTask;
 import com.cookpad.android.issuereporter.util.IntentUtils;
 
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.RemoteException;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.FileProvider;
+import android.widget.Toast;
+
 import java.io.File;
 import java.io.IOException;
 
-@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class IssueReporterFragment extends Fragment {
     public static final String FRAGMENT_TAG = IssueReporterFragment.class.getName();
     public static final String EXTRA_REPORT = "extra_report";
@@ -105,7 +102,7 @@ public class IssueReporterFragment extends Fragment {
         new ScreenshotTask(getActivity(), new ScreenshotTask.Callback() {
             @Override
             public void onTakeScreenshot(File bitmapFile) {
-                Activity activity = getActivity();
+                FragmentActivity activity = getActivity();
 
                 ProgressDialogFragment.dismiss(activity);
                 String authority = "com.cookpad.android.issuereporter.fileprovider";
@@ -132,4 +129,3 @@ public class IssueReporterFragment extends Fragment {
         getActivity().unbindService(conn);
     }
 }
-

@@ -18,6 +18,8 @@ public class IssueReporterManager {
         public void onCreated(Activity activity) {
             if (activity instanceof FragmentActivity) {
                 IssueReporter.apply((FragmentActivity) activity, reportMail);
+            } else {
+                IssueReporter.apply(activity, reportMail);
             }
         }
     };
